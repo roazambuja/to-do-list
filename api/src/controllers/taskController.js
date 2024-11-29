@@ -15,6 +15,26 @@ class TaskController {
       res.status(500).json({ message: `${erro.message} - falha ao cadastrar tarefa` });
     }
   }
+
+  static async updateTask(req, res) {
+    try {
+      const id = req.params.id;
+      await task.findByIdAndUpdate(id, { done: true }, { new: true });
+      res.status(200).json({ message: "Tarefa concluída" });
+    } catch (erro) {
+      res.status(500).json({ message: `${erro.message} - falha na atualização` });
+    }
+  }
+
+  static async deleteTask(req, res) {
+    try {
+      const id = req.params.id;
+      await task.findByIdAndDelete(id);
+      res.status(200).json({ message: "Tarefa excluída com sucesso!" });
+    } catch (erro) {
+      res.status(500).json({ message: `${erro.message} - falha na exclusão` });
+    }
+  }
 }
 
 export default TaskController;
