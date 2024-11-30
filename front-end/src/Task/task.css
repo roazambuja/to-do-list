@@ -1,4 +1,19 @@
 .task {
   padding: 12px 24px 12px 24px;
-  /* background-color: red; */
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.task:last-child {
+  border-bottom: none;
+}
+
+.task:hover {
+  background-color: #f9f9f9;
+}
+
+.task__icons {
+  display: flex;
+  gap: 16px;
 }
