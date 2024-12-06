@@ -1,10 +1,14 @@
 import "./task.css";
 import { FaRegTrashAlt, FaCheck } from "react-icons/fa";
 
-function Task() {
+interface ITask {
+  title: string;
+}
+
+function Task({ title }: ITask) {
   return (
     <div className="task">
-      <span>Tarefa</span>
+      <span>{title}</span>
       <div className="task__icons">
         <FaRegTrashAlt title="Excluir tarefa" />
         <FaCheck title="Concluir tarefa" />
