@@ -18,3 +18,13 @@
   display: flex;
   gap: 16px;
 }
+
+.task__icons svg {
+  cursor: pointer;
+}
+
+.done,
+.done:hover {
+  text-decoration: line-through;
+  background-color: #e9edef;
+}
