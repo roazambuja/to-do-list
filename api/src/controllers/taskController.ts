@@ -4,7 +4,7 @@ import task from "../models/Task";
 class TaskController {
   static async listTasks(req: Request, res: Response): Promise<void> {
     try {
-      const listTasks = await task.find({}).sort({ _id: -1 });
+      const listTasks = await task.find({}).sort({ done: 1, _id: -1 });
       res.status(200).json(listTasks);
     } catch (error: any) {
       res.status(500).json({ message: `${error.message} - falha ao listar tarefas` });
