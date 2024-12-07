@@ -2,7 +2,7 @@
 
 Projeto desenvolvido para a disciplina Tópicos Especiais em Backend II, do curso Tecnologia em Sistemas para Internet do IFSul Campus Charqueadas.
 
-## Como executar o projeto
+## :gear: Como executar o projeto
 
 Clonar o repositório:
 
