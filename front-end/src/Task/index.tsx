@@ -1,3 +1,4 @@
+import { deleteTask } from "../services/api";
 import "./task.css";
 import { FaRegTrashAlt, FaCheck } from "react-icons/fa";
 
@@ -6,14 +7,19 @@ interface ITask {
   setTasks: React.Dispatch<React.SetStateAction<TaskProps[]>>;
 }
 export interface TaskProps {
-  id?: string;
+  _id?: string;
   title: string;
   done: boolean;
 }
 
 function Task({ task, setTasks }: ITask) {
-  const handleDelete = () => {
-    // setTasks((prevTasks) => prevTasks.filter((t) => t.id !== task.id));
+  const handleDelete = async () => {
+    try {
+      await deleteTask(task._id!);
+      setTasks((prevTasks) => prevTasks.filter((t) => t._id !== task._id));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleUpdate = () => {
