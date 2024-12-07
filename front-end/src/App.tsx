@@ -1,29 +1,43 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Task from "./Task";
-// import { getTasks } from "./services/api";
+import Task, { TaskProps } from "./Task";
+import { getTasks } from "./services/api";
 
 function App() {
   const [newTask, setNewTask] = useState<string>("");
-  const [tasks, setTasks] = useState<string[]>([
-    "Estudar React",
-    "Escrever texto do TCC",
-    "Fazer apresentação",
-  ]);
+  const [tasks, setTasks] = useState<TaskProps[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [hasError, setHasError] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("Carregando...");
 
-  // useEffect(() => {
-  //   getTasks();
-  // }, []);
+  const getTaskList = async () => {
+    try {
+      let response = await getTasks();
+      setTasks(response);
+    } catch (error) {
+      setHasError(true);
+      setMessage("Ocorreu um erro ao carregar as tarefas.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getTaskList();
+  }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (newTask != "") {
-      tasks.push(newTask);
+      // setTasks((prevTasks) => [{ id: "2", title: newTask, done: false }, ...prevTasks]);
+
       setNewTask("");
     }
   };
 
-  return (
+  return isLoading || hasError ? (
+    <p>{message}</p>
+  ) : (
     <main>
       <form onSubmit={handleSubmit}>
         <input
@@ -38,7 +52,7 @@ function App() {
       <div className="list">
         <h1>Lista de tarefas</h1>
         {tasks.map((task, key) => {
-          return <Task title={task} key={key} />;
+          return <Task task={task} key={key} setTasks={setTasks} />;
         })}
       </div>
     </main>
