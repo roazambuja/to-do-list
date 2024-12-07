@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Task, { TaskProps } from "./Task";
-import { getTasks } from "./services/api";
+import { createTask, getTasks } from "./services/api";
 
 function App() {
   const [newTask, setNewTask] = useState<string>("");
@@ -26,11 +26,17 @@ function App() {
     getTaskList();
   }, []);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (newTask != "") {
-      // setTasks((prevTasks) => [{ id: "2", title: newTask, done: false }, ...prevTasks]);
 
+    if (newTask != "") {
+      try {
+        let response = await createTask({ title: newTask, done: false });
+        const { task } = response;
+        setTasks((prevTasks) => [task, ...prevTasks]);
+      } catch (error) {
+        console.log(error);
+      }
       setNewTask("");
     }
   };

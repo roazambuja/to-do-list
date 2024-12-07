@@ -6,7 +6,7 @@ interface ITask {
   setTasks: React.Dispatch<React.SetStateAction<TaskProps[]>>;
 }
 export interface TaskProps {
-  id: string;
+  id?: string;
   title: string;
   done: boolean;
 }
