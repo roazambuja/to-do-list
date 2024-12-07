@@ -36,7 +36,6 @@ class TaskController {
     }
   }
 
-  // Método para excluir uma tarefa
   static async deleteTask(req: Request, res: Response): Promise<void> {
     try {
       const id = req.params.id;
