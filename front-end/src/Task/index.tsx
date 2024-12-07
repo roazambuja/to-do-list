@@ -1,4 +1,4 @@
-import { deleteTask } from "../services/api";
+import { deleteTask, finishTask } from "../services/api";
 import "./task.css";
 import { FaRegTrashAlt, FaCheck } from "react-icons/fa";
 
@@ -22,13 +22,18 @@ function Task({ task, setTasks }: ITask) {
     }
   };
 
-  const handleUpdate = () => {
-    // setTasks((prevTasks) => {
-    //   const updatedTasks = prevTasks.map((t) => (t.id === task.id ? { ...t, done: true } : t));
-    //   const completedTask = updatedTasks.find((t) => t.id === task.id);
-    //   const remainingTasks = updatedTasks.filter((t) => t.id !== task.id);
-    //   return [...remainingTasks, completedTask!];
-    // });
+  const handleUpdate = async () => {
+    try {
+      await finishTask(task._id!);
+      setTasks((prevTasks) => {
+        const updatedTasks = prevTasks.map((t) => (t._id === task._id ? { ...t, done: true } : t));
+        const completedTask = updatedTasks.find((t) => t._id === task._id);
+        const remainingTasks = updatedTasks.filter((t) => t._id !== task._id);
+        return [...remainingTasks, completedTask!];
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
