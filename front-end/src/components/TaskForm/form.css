@@ -1,0 +1,28 @@
+form {
+  box-sizing: border-box;
+  display: flex;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 2px solid #d2e4ee;
+  height: 50px;
+}
+
+form input {
+  border: none;
+  width: 100%;
+  padding: 16px;
+  outline: none;
+  font-size: 18px;
+}
+
+form button {
+  border: none;
+  padding: 12px;
+  background-color: #d2e4ee;
+  font-weight: 500;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  cursor: pointer;
+}

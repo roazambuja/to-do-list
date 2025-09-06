@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Task, { TaskProps } from "./Task";
-import { createTask, getTasks } from "./services/api";
+import { getTasks } from "./services/api";
+import TaskForm from "./components/TaskForm";
 
 function App() {
-  const [newTask, setNewTask] = useState<string>("");
   const [tasks, setTasks] = useState<TaskProps[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [hasError, setHasError] = useState<boolean>(false);
@@ -26,34 +26,11 @@ function App() {
     getTaskList();
   }, []);
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (newTask != "") {
-      try {
-        let response = await createTask({ title: newTask, done: false });
-        const { task } = response;
-        setTasks((prevTasks) => [task, ...prevTasks]);
-      } catch (error) {
-        console.log(error);
-      }
-      setNewTask("");
-    }
-  };
-
   return isLoading || hasError ? (
     <p>{message}</p>
   ) : (
     <main>
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Nova Tarefa"
-          type="text"
-          value={newTask}
-          onChange={(e) => setNewTask(e.target.value)}
-        />
-        <button type="submit">Adicionar</button>
-      </form>
+      <TaskForm setTasks={setTasks} />
 
       <div className="list">
         <h1>Lista de tarefas</h1>
