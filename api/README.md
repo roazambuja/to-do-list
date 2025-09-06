@@ -16,4 +16,4 @@
 ```
 
 - `DELETE /tasks/:id` - Exclui a tarefa informada na URL.
-- `PUT /tasks/:id` - Marca a tarefa como concluída informada na URL.
+- `PUT /tasks/:id` - Marca como concluída a tarefa informada na URL.
