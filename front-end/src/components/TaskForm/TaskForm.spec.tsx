@@ -5,8 +5,17 @@ import { vi } from "vitest";
 import userEvent from "@testing-library/user-event";
 import TaskForm from ".";
 
+vi.mock("../../services/api", () => ({
+  createTask: vi.fn(),
+}));
+
 describe("TaskForm component", () => {
-  const setTasks = vi.fn();
+  let setTasks: React.Dispatch<React.SetStateAction<any[]>>;
+
+  beforeEach(() => {
+    setTasks = vi.fn();
+    (api.createTask as unknown as ReturnType<typeof vi.fn>).mockClear();
+  });
 
   it("should render the component with empty value", () => {
     render(<TaskForm setTasks={setTasks} />);
@@ -22,8 +31,6 @@ describe("TaskForm component", () => {
   });
 
   it("should call createTask when submitting a new task", async () => {
-    const createTaskMock = vi.spyOn(api, "createTask");
-
     render(<TaskForm setTasks={setTasks} />);
     const input = screen.getByTestId("input");
     const button = screen.getByText("Adicionar");
@@ -32,23 +39,19 @@ describe("TaskForm component", () => {
     await userEvent.click(button);
 
     await waitFor(() => {
-      expect(createTaskMock).toHaveBeenCalledWith({ title: "Nova tarefa", done: false });
+      expect(api.createTask).toHaveBeenCalledWith({ title: "Nova tarefa", done: false });
     });
   });
 
   it("should not call createTask if input is empty", async () => {
-    const createTaskMock = vi.spyOn(api, "createTask");
     render(<TaskForm setTasks={setTasks} />);
     const button = screen.getByText("Adicionar");
 
     await userEvent.click(button);
-    expect(createTaskMock).not.toHaveBeenCalled();
+    expect(api.createTask).not.toHaveBeenCalled();
   });
 
   it("should clear input after submitting a task", async () => {
-    const mockNewTask = { _id: "1", title: "Nova tarefa", done: false };
-    vi.spyOn(api, "createTask").mockResolvedValueOnce({ task: mockNewTask });
-
     render(<TaskForm setTasks={setTasks} />);
     const input = screen.getByTestId("input") as HTMLInputElement;
     const button = screen.getByText("Adicionar");
