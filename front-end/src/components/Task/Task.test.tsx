@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Task, { TaskProps } from ".";
-import * as api from "../services/api";
+import * as api from "../../services/api";
 import { vi } from "vitest";
 
 describe("Task component", () => {

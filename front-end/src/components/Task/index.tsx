@@ -1,4 +1,4 @@
-import { deleteTask, finishTask } from "../services/api";
+import { deleteTask, finishTask } from "../../services/api";
 import "./task.css";
 import { FaRegTrashAlt, FaCheck } from "react-icons/fa";
 

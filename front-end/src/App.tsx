@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Task, { TaskProps } from "./Task";
+import Task, { TaskProps } from "./components/Task";
 import { getTasks } from "./services/api";
 import TaskForm from "./components/TaskForm";
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./form.css";
 import { createTask } from "../../services/api";
-import { TaskProps } from "../../Task";
+import { TaskProps } from "../Task";
 
 interface ITaskForm {
   setTasks: React.Dispatch<React.SetStateAction<TaskProps[]>>;

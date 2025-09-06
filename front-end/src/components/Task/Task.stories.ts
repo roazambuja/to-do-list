@@ -3,7 +3,7 @@ import Task from ".";
 import { fn } from "storybook/test";
 
 const meta = {
-  title: "Task",
+  title: "Components/Task",
   component: Task,
   tags: ["autodocs"],
   parameters: {
