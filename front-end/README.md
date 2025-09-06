@@ -1,50 +1,22 @@
-# React + TypeScript + Vite
+# :white_check_mark: to-do-list: front-end
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositório contém o front-end da aplicação To-Do List, desenvolvido utilizando React com Vite. O projeto foi desenvolvido inicialmente para atender requisitos escolares e posteriormente aprimorado para aprofundar conhecimentos em Storybook e testes unitários.
 
-Currently, two official plugins are available:
+## :book: Storybook
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Os componentes estão documentados com Storybook, permitindo visualizar estados e variações de cada componente.
+Mais detalhes sobre os componentes e suas stories podem ser conferidos no Storybook, acessível via:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+npm run storybook
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Após rodar o comando, o Storybook estará disponível em <a href="http://localhost:6006/" target="_blank">http://localhost:6006/</a>.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## :test_tube: Testes
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Os componentes possuem testes unitários utilizando Vitest, validando o funcionamento correto das funcionalidades. Para rodar os testes:
+
+```
+npm test
 ```

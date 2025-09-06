@@ -27,6 +27,8 @@ Um detalhamento sobre as funcionalidades da API está disponível no [README](./
 3. Rodar o comando `npm run dev`
 4. A aplicação estará disponível em <a href="http://localhost:5173/" target="_blank">http://localhost:5173/</a>.
 
+Mais informações sobre o desenvolvimento do front-end podem ser encontradas no [README](./front-end/README.md) da pasta `front-end`.
+
 ## :hammer_and_wrench: Ferramentas utilizadas
 
 ### Back-end
@@ -41,3 +43,6 @@ Um detalhamento sobre as funcionalidades da API está disponível no [README](./
 - React
 - HTML
 - CSS
+- TypeScript
+- Storybook
+- Vitest
