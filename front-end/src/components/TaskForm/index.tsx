@@ -33,6 +33,7 @@ function TaskForm({ setTasks }: ITaskForm) {
   return (
     <form onSubmit={handleSubmit}>
       <input
+        data-testid="input"
         placeholder="Nova Tarefa"
         type="text"
         value={newTask}
