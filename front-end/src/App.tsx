@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Task, { TaskProps } from "./components/Task";
+import { TaskProps } from "./components/Task";
 import { getTasks } from "./services/api";
 import TaskForm from "./components/TaskForm";
+import TaskList from "./components/TaskList";
 
 function App() {
   const [tasks, setTasks] = useState<TaskProps[]>([]);
@@ -31,13 +32,7 @@ function App() {
   ) : (
     <main>
       <TaskForm setTasks={setTasks} />
-
-      <div className="list">
-        <h1>Lista de tarefas</h1>
-        {tasks.map((task, key) => {
-          return <Task task={task} key={key} setTasks={setTasks} />;
-        })}
-      </div>
+      <TaskList tasks={tasks} setTasks={setTasks} />
     </main>
   );
 }
