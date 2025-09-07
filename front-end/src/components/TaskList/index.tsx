@@ -9,7 +9,7 @@ interface ITaskList {
 function TaskList({ tasks, setTasks }: ITaskList) {
   return (
     <div className="list">
-      <h1>Lista de tarefas</h1>
+      <h1 className="title">Lista de tarefas</h1>
       {tasks.map((task, key) => {
         return <Task task={task} key={key} setTasks={setTasks} />;
       })}

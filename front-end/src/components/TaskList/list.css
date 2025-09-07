@@ -4,7 +4,7 @@
   overflow: hidden;
 }
 
-h1 {
+.title {
   text-align: center;
   background-color: #d2e4ee;
   font-size: 1.8em;
