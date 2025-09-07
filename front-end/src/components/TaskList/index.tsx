@@ -6,6 +6,11 @@ interface ITaskList {
   tasks: TaskProps[];
 }
 
+/**
+ * O TaskList é responsável por exibir a lista de tarefas,
+ * recebendo como props a lista e a função de atualização.
+ * A renderização de cada item é delegada ao componente Task.
+ */
 function TaskList({ tasks, setTasks }: ITaskList) {
   return (
     <div className="list">
