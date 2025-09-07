@@ -13,7 +13,7 @@ export interface TaskProps {
 }
 
 /**
- * Componente Responsável por exibir uma tarefa individual da lista,
+ * Componente responsável por exibir uma tarefa individual da lista,
  * mostrando seu título e estado (concluída ou pendente).
  * Também permite ao usuário interagir com a tarefa através das ações de concluir e excluir.
  */
